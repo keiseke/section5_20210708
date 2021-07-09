@@ -1,10 +1,14 @@
-import { Link, Route, Switch } from "react-router-dom";
-import { Page1DetailA } from "./Page1DetailA";
-import { Page1DetailB } from "./Page1DetailB";
+import { Link, useHistory } from "react-router-dom";
 
 export const Page1 = () => {
   const arr = [...Array(100).keys()];
   console.log(arr);
+
+  const history = useHistory();
+
+  const onClickDetailA = () => {
+    history.push("/page1/detailA");
+  };
 
   return (
     <div>
@@ -13,6 +17,8 @@ export const Page1 = () => {
       <Link to={{ pathname: "/page1/detailA", state: arr }}>detailA</Link>
       <br />
       <Link to="/page1/detailB">detailB</Link>
+      <br />
+      <button onClick={onClickDetailA}>DetailA</button>
     </div>
   );
 };
